@@ -4,7 +4,7 @@ defmodule ExJira.Mixfile do
   def project do
     [app: :exjira,
      version: "0.0.1",
-     elixir: "~> 1.0",
+     elixir: ">= 1.0",
      deps: deps,
      description: description,
      package: package]
@@ -31,8 +31,8 @@ defmodule ExJira.Mixfile do
     [
       {:oauth, github: "tim/erlang-oauth"},
       {:poison, "~> 3.0"},
-      {:exvcr, "~> 0.3", only: [:dev, :test]},
-      {:dotenv, "~> 0.0.4"}
+      {:exvcr, ">= 0.3", only: [:dev, :test]},
+      {:dotenv, ">= 0.0.4"}
     ]
   end
 

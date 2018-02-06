@@ -32,7 +32,7 @@ defmodule ExJira.Mixfile do
       {:oauth, github: "tim/erlang-oauth"},
       {:poison, "~> 3.0"},
       {:exvcr, ">= 0.3", only: [:dev, :test]},
-      {:dotenv, ">= 0.0.4"}
+      {:dotenv, github: "avdi/dotenv_elixir"}
     ]
   end
 

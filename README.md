@@ -10,11 +10,11 @@ A non-trivial project to help me get started using Elixir - Currently WIP.
 ### 1. Get the Jira access token
 In order to access Jira API you need to generate an access-token that is included on each request to the Jira API
 
-This page shows you how to authenticate clients against the Jira REST API using OAuth (1.0a). We’ll explain how OAuth works with Jira, and walk you through an example of how to use OAuth to authenticate an Elixir application (consumer) against the Jira (resource) REST API for a user (resource owner).
+This page shows how to authenticate clients against the Jira REST API using OAuth (1.0a). We’ll explain how OAuth works with Jira, and walk you through an example of how to use OAuth to authenticate an Elixir application (consumer) against the Jira (resource) REST API for a user (resource owner).
 This process is base on the Java version from [Jira documentation](https://developer.atlassian.com/cloud/jira/platform/jira-rest-api-oauth-authentication).
 
 #### Before you begin
-To generate the access-token that needs to be provided in your final application where you're going to access de Jira API you must clone this repo and perform some requests and configuration.
+To generate the access-token that needs to be provided in the application where you're going to access de Jira API you must clone this repo and perform some requests and configuration.
 
 #### Step 1 - Configure your client application as an OAuth consumer
 In Jira, OAuth consumers are represented by application links. Application links use OAuth with RSA-SHA1 signing for authentication. This means that a private key is used to sign requests, rather than the OAuth token secret/consumer secret. In the following steps, you’ll be generating an RSA public/private key pair, then creating a new application link in Jira that uses the key.
@@ -72,29 +72,21 @@ Keep in mind that the **Consumer key** value that you tipe it's going to be need
 
 That’s it! You’ve now configured the sample client as an OAuth consumer in Jira.
 
-#### 2. Add dependencies
+#### 2. Setup
 
 Add the following to the deps section in `mix.exs`.
-
 ```elixir
 defp deps do
   [
-    {:oauth, github: "tim/erlang-oauth"},
-    {:exjira, "~> 0.1"}
+    {:exjira, "~> 0.0.1"},
+    {:oauth, github: "tim/erlang-oauth"}
   ]
 end
 ```
 
-#### 2. Setup OAuth parameters
+#### 2. Setup Init OAuth parameters
 
 Use `ExJira.configure` to setup the JIRA OAuth parameters. See the Configuration section below for further details.
-
-#### 3. Access JIRA endpoints
-
-Call the functions in the ExJira module (e.g. `ExJira.projects` to return all projects or `ExJira.project("KEY")` to return a specifc one).
-
-
-### Configuration
 
 There are three ways to configure ExJira:
 
@@ -103,11 +95,13 @@ There are three ways to configure ExJira:
 In `config/config.exs` add the following:
 
 ```elixir
-config :ex_jira, [
-  site: "http://youraccount.atlassian.net",
-  private_key_file: "private_key.pem"
-  consumer_key: ""
-]
+use Mix.Config
+
+ config :ex_jira, oauth: [
+   site: "https://your-site.atlassian.net",
+   private_key_file: "jira_elixir.pem",
+   consumer_key: "ElixirJiraClientConsumerKey"
+ ]
 ```
 
 #### Across the application at runtime
@@ -121,3 +115,24 @@ ExJira.configure([consumer_key: "", ...])
 ```elixir
 ExJira.configure(:process, [consumer_key: "", ...])
 ```
+
+#### 3. Genrate JIRA access token
+In order to access Jira API resources it's needed to provide access tokens, the following steps show how to accomplish this.
+
+* After adding dependencies to the project run `$ mix deps.get` to download dependencies to your project.
+* Know run `$ mix run -e 'ExJira.CLI.process()'` to start the process. Then you should see an url that you need to navigate in your prouser to grant app authorization to the resources.
+
+![Jira authorization](/images/setup1.png)
+
+In the authorization process just click the `Allow` button
+![Jira authorization](/images/setup2.png)
+
+Know you will se an `Access Approved` screen.
+![Jira authorization](/images/setup3.png)
+
+#### 3. Access JIRA endpoints
+
+Call the functions in the ExJira module (e.g. `ExJira.projects` to return all projects or `ExJira.project("KEY")` to return a specifc one).
+
+
+### Configuration

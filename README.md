@@ -130,6 +130,9 @@ In the authorization process just click the `Allow` button
 Know you will se an `Access Approved` screen.
 ![Jira authorization](/images/setup3.png)
 
+When this is done, you'll get all the credentials need to access Jira API.
+![Jira credentials](/images/setup4.png)
+
 #### 3. Access JIRA endpoints
 
 Call the functions in the ExJira module (e.g. `ExJira.projects` to return all projects or `ExJira.project("KEY")` to return a specifc one).

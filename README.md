@@ -122,6 +122,10 @@ In order to access Jira API resources it's needed to provide access tokens, the 
 * After adding dependencies to the project run `$ mix deps.get` to download dependencies to your project.
 * Know run `$ mix run -e 'ExJira.CLI.process()'` to start the process. Then you should see an url that you need to navigate in your prouser to grant app authorization to the resources.
 
+If you have any errror you will have a response like the following:
+![Jira Error Response 1](/images/error-response1.png)
+![Jira Error Response 2](/images/error-response2.png)
+
 ![Jira authorization](/images/setup1.png)
 
 In the authorization process just click the `Allow` button
@@ -129,10 +133,6 @@ In the authorization process just click the `Allow` button
 
 Know you will se an `Access Approved` screen.
 ![Jira authorization](/images/setup3.png)
-
-If you have any errror you will have a response like the following:
-![Jira Error Response 1](/images/error-response1.png)
-![Jira Error Response 2](/images/error-response2.png)
 
 When this is done, you'll get all the credentials need to access Jira API.
 ![Jira credentials](/images/setup4.png)

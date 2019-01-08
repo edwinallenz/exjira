@@ -13,4 +13,7 @@ defmodule ExJira.API.Sprints do
     request(:get, "rest/greenhopper/latest/rapid/charts/sprintreport", [rapidViewId: rapid_view_id, sprintId: sprint_id])
   end
 
+  def find_active_sprint(rapid_view_id) do
+    request(:get, "rest/agile/1.0/board/#{rapid_view_id}/sprint", [state: "active"])
+  end
 end

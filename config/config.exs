@@ -22,3 +22,11 @@ use Mix.Config
 # here (which is why it is important to import them last).
 #
 #     import_config "#{Mix.env}.exs"
+
+# config :ex_jira, oauth: [
+#   site: "https://your-site.atlassian.net",
+#   private_key_file: "jira_privatekey.pem",
+#   consumer_key: "OauthKeyName",
+#   oauth_token: "xxxx",
+#   oauth_token_secret: "xxx"
+# ]

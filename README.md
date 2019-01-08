@@ -130,5 +130,9 @@ In the authorization process just click the `Allow` button
 Know you will se an `Access Approved` screen.
 ![Jira authorization](/images/setup3.png)
 
+If you have any errror you will have a response like the following:
+![Jira Error Response 1](/images/error-response1.png)
+![Jira Error Response 2](/images/error-response2.png)
+
 When this is done, you'll get all the credentials need to access Jira API.
 ![Jira credentials](/images/setup4.png)

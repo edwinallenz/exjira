@@ -8,18 +8,18 @@ defmodule IssuesTest do
   end
 
   test "find returns info for an issue using an issue key" do
-    issue = ExJira.API.Issues.find("FIVE-8")
+    issue = ExJira.API.Issues.find("YE-23")
 
-    assert issue.key == "FIVE-8"
+    assert issue.key == "YE-23"
     assert issue.id != ""
     assert issue.fields.summary != ""
   end
 
   test "find returns info for an issue using an issue id" do
-    issue = ExJira.API.Issues.find("11238")
+    issue = ExJira.API.Issues.find("21402")
 
     assert issue.key != ""
-    assert issue.id == "11238"
+    assert issue.id == "21402"
     assert issue.fields.summary != ""
   end
 

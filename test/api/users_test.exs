@@ -8,7 +8,7 @@ defmodule UsersTest do
   end
 
   test "find returns info for user given a username" do
-    user = ExJira.API.Users.find("matt.weldon")
+    user = ExJira.API.Users.find("fred") |> IO.inspect
 
     assert user.displayName == "Matt Weldon"
     assert user.emailAddress != ""

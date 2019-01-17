@@ -6,14 +6,14 @@ defmodule ExJira.Config do
   @doc """
   Get OAuth config values.
   """
-  def get, do: get(current_scope)
+  def get, do: get(current_scope())
   def get(:global), do:  Application.get_env(:ex_jira, :oauth)
   def get(:process), do: Process.get(:_ex_jira_oauth, nil)
 
   @doc """
   Set OAuth config values.
   """
-  def set(value), do: set(current_scope, value)
+  def set(value), do: set(current_scope(), value)
   def set(:global, value), do: Application.put_env(:ex_jira, :oauth, value)
   def set(:process, value) do
     Process.put(:_ex_jira_oauth, value)
@@ -26,7 +26,7 @@ defmodule ExJira.Config do
   def get_tuples do
     case ExJira.Config.get do
       nil -> []
-      tuples -> tuples |> Enum.map(fn({k, v}) -> {k, to_char_list(v)} end)
+      tuples -> tuples |> Enum.map(fn({k, v}) -> {k, to_charlist(v)} end)
     end
   end
 

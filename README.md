@@ -126,6 +126,7 @@ If you have any errror you will have a response like the following:
 ![Jira Error Response 1](/images/error-response1.png)
 ![Jira Error Response 2](/images/error-response2.png)
 
+A successful response will loke like
 ![Jira authorization](/images/setup1.png)
 
 In the authorization process just click the `Allow` button

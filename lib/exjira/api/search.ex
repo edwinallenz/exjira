@@ -1,6 +1,16 @@
 defmodule ExJira.API.Search do
+
   @moduledoc """
   Exposes the Search API interface.
+  """
+
+  @doc """
+  Returns Jira issues related to JQL condition
+
+  ## Examples
+
+  iex> ExJira.API.search.using_jql("assignee = edwinallenz")
+  "%{}"
   """
 
   import ExJira.API.Base

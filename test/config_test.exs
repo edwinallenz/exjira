@@ -4,7 +4,7 @@ defmodule ExJira.ConfigTest do
   test "global config initialization" do
     oauth = 
       [ site: "http://exjira.atlassian.net",
-        private_key_file: "private_key.pem",
+        private_key_file: "private_key",
         consumer_key: "sample_consumer_key" ]
 
     ExJira.Config.set(oauth)
@@ -14,8 +14,8 @@ defmodule ExJira.ConfigTest do
   end
 
   test "process-based config initialization" do
-    current_pid = self
-    
+    current_pid = self()
+
     test_fun = fn(test_pid, config) ->
       spawn(fn() ->
         ExJira.Config.set(:process, config)
